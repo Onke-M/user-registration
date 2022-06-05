@@ -1,4 +1,4 @@
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="form">
     <mat-card class="box">
       <mat-card-header>
         <mat-card-title>Login</mat-card-title>
@@ -7,7 +7,7 @@
       <form class="example-form">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input matInput id="email" placeholder="Email">
+            <input matInput id="username" placeholder="Username">
             <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
               <div *ngIf="f.username.errors.required">Email is required</div>
           </div> -->
@@ -19,12 +19,13 @@
           </div> -->
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block" type="submit">Log in</button>
+        <button mat-stroked-button color="primary" class="btn-block" type="submit">Log in</button>
       </form>
 
       <br/>
-      <button mat-raised-button color="warn">
-        Reset Password
-      </button>
+      Don't have an account? Register 
+      <a href="register">
+        here
+      </a>
     </mat-card>
   </div>
