@@ -11,7 +11,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatSnackBarModule } from '@angular/material/snack-bar'
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
     declarations: [],
@@ -28,7 +29,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
         MatRadioModule,
         MatButtonModule,
         MatCardModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatPaginatorModule
     ],
     exports: [
         CommonModule,
@@ -43,7 +45,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar'
         MatRadioModule,
         MatButtonModule,
         MatCardModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatPaginatorModule
     ]
 })
 export class MaterialModule { }
