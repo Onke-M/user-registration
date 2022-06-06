@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormGroup} from '@angular/forms'
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SnackbarService } from 'src/app/snackbar.service';
+
 
 const API_URL = environment.API_URL;
+let valid: any;
 
 @Component({
   selector: 'app-login-page',
@@ -12,9 +17,10 @@ const API_URL = environment.API_URL;
 })
 export class LoginPageComponent implements OnInit {
   loginUser!: FormGroup
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public snackbarService: SnackbarService, public router: Router) { }
 
   ngOnInit(){
+    this.snackbarService.openSnackBar();
     this.loginUser = new FormGroup({
       emailAddress: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required]),
@@ -24,7 +30,17 @@ export class LoginPageComponent implements OnInit {
     if(this.loginUser.valid){
       this.http.post(`${API_URL}/Authentication/Login`, this.loginUser.value)
       .subscribe((results) => {
-        console.log(results);
+        valid = results
+        if(this.loginUser.value.emailAddress == valid.emailAddress)
+        {
+          this.snackbarService.setMessage("The OTP has been sent to your email address")
+          this.router.navigate(["/otp"]);
+        }
+        else
+        {
+          this.snackbarService.setMessage("Invalid user credentials");
+          this.snackbarService.openSnackBar();
+        }
       })
   }
 
