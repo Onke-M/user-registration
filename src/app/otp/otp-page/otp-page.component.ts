@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 const API_URL = environment.API_URL;
-
+let valid: any;
 
 
 @Component({
@@ -22,12 +22,25 @@ export class OtpPageComponent implements OnInit {
     this.snackbarService.openSnackBar();
 
     this.otpForm = new FormGroup({
-      otp: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)])
+      oneTimePin: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(4)])
     })
   }
 
   public verifyOTP(): void {
-    console.log(this.otpForm.value)
-    this.router.navigate(["/dashboard"]);
+    if(this.otpForm.valid){
+      this.http.post(`${API_URL}/Authentication/SendOTP`, this.otpForm.value)
+      .subscribe((results) => {
+        valid = results
+        if(this.otpForm.value.oneTimePin == valid.oneTimePin)
+        {
+          this.router.navigate(["/dashboard"]);
+        }
+        else
+        {
+          this.snackbarService.setMessage("Invalid OTP");
+          this.snackbarService.openSnackBar();
+        }
+      })
+  }
   }
 }
