@@ -27,17 +27,23 @@ export class RegisterPageComponent implements OnInit {
   }
 
   public addUser(): void {
+    //Check if the form is valid
     if(this.registerUser.valid){
+      //Send the user's details to the API
       this.http.post(`${API_URL}/Authentication/Register`, this.registerUser.value)
       .subscribe((results) => {
+        //Retrieve API's response
         valid = results;
+        //Check if the user already exists
         if(this.registerUser.value.emailAddress == valid.emailAddress)
         {
+          //If not then register the user
           this.snackbarService.setMessage("Registered successfully");
           this.router.navigate(["/login"]);
         }
         else
         {
+          //If they exist then generate and display an error message
           this.snackbarService.setMessage("User account already exists");
           this.snackbarService.openSnackBar();
         }

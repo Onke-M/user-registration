@@ -27,17 +27,23 @@ export class LoginPageComponent implements OnInit {
     })
   }
   public logUser(): void {
+    //Check if the form is valid
     if(this.loginUser.valid){
+      //Send login details to API
       this.http.post(`${API_URL}/Authentication/Login`, this.loginUser.value)
       .subscribe((results) => {
+        //Retrieve response from API
         valid = results
+        //Check if the user details are the same as the API's response
         if(this.loginUser.value.emailAddress == valid.emailAddress)
         {
+          //If they are then generate the notification that'll display in the otp page and route to it
           this.snackbarService.setMessage("The OTP has been sent to your email address")
           this.router.navigate(["/otp"]);
         }
         else
         {
+          //If not then generate and display an error message
           this.snackbarService.setMessage("Invalid user credentials");
           this.snackbarService.openSnackBar();
         }
