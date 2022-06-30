@@ -21,7 +21,7 @@ export interface Product {
 })
 export class DashboardPageComponent implements OnInit {
   products: any = [];
-  displayedColumns: string[] = ['Name', 'Price', 'Brand', 'Type', 'Description'];
+  displayedColumns: string[] = ['Name', 'Price', 'Description'];
   dataSource = new MatTableDataSource<Product>()
   constructor(public http: HttpClient) { }
 
