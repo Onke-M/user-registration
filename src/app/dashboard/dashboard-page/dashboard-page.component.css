@@ -1,0 +1,17 @@
+.mat-row {
+    height: auto;
+  }
+  
+  .mat-cell {
+    padding: 15px;
+  }
+
+  .chart {
+    height:500px;
+    width:500px;
+ }
+
+ #aligned {
+    display: flex;
+    justify-content: center;
+ }
