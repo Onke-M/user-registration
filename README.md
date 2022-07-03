@@ -49,3 +49,4 @@ o On the same page, a table of the products is displayed
 ![My Image](email.png)
 ![My Image](graphs.png)
 ![My Image](table.png)
+![My Image](register.png)
