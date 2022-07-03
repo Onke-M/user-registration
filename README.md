@@ -42,3 +42,10 @@ o The product dashboard will display 2 pie charts. One for the Product count gro
 the other for the Product count grouped by Product Type.
 <br/>
 o On the same page, a table of the products is displayed
+<br/>
+# Screenshots
+![My Image](login.png)
+![My Image](otp.png)
+![My Image](email.png)
+![My Image](graphs.png)
+![My Image](table.png)
